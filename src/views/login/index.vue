@@ -51,6 +51,14 @@
     </el-form>
   </div>
 </template>
+<script lang='ts'>
+import { Component, Vue, Watch } from 'vue-property-decorator'
+@Component({
+  name: 'Login',
+  components: {}
+})
+export default class extends Vue {}
+</script>
 <script>
 import { isValidUsername } from '@/utils/validate'
 export default {
