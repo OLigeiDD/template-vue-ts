@@ -37,7 +37,7 @@ const messages = {
 }
 
 export const getLocale = () => {
-  // 如果cookie中存在语言设置，就返回改值
+  // 如果cookie中存在语言设置，就返回该值
   const cookieLanguage = getLanguage()
   if (cookieLanguage) {
     return cookieLanguage

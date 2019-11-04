@@ -9,7 +9,7 @@
       label-position="left"
     >
       <div class="title-container">
-        <h3 class="title">系统登录</h3>
+        <h3 class="title">{{ $t('login.title') }}</h3>
       </div>
       <el-form-item prop="username">
         <span class="svg-container">
@@ -77,6 +77,7 @@ export default {
         callback()
       }
     }
+
     return {
       loginForm: {
         username: '',
