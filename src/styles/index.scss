@@ -1,13 +1,15 @@
-
+@import './svgicon.scss';
+@import '~element-ui/lib/theme-chalk/index.css'; // 前面加~表示后面的只为alias，会去webpack alias中查找
 /*Global scss*/
 body {
   height: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, 'PingFang SC', 'Microsoft YaHei', Arial
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+    'Open Sans', 'Helvetica Neue', sans-serif, 'PingFang SC', 'Microsoft YaHei', Arial;
 }
 
-html{
+html {
   height: 100%;
 }
 
@@ -17,19 +19,18 @@ html{
 
 *,
 *::before,
-*::after{
+*::after {
   box-sizing: border-box;
 }
 
 a,
 a:focus,
-a:hover{
+a:hover {
   color: inherit;
   outline: none;
   text-decoration: none;
 }
 
-div:focus{
+div:focus {
   outline: none;
 }
-

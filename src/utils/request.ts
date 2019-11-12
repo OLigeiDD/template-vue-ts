@@ -4,7 +4,10 @@ import { UserModule } from '@/store/modules/user'
 
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
-  timeout: 5000
+  timeout: 5000,
+  headers: {
+    Accept: 'application/json'
+  }
 })
 
 service.interceptors.request.use(

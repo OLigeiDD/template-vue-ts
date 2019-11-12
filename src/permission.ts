@@ -21,12 +21,13 @@ router.beforeEach(async (to: Route, from: Route, next: any) => {
       next({ path: '/' })
       Nprogress.done()
     } else {
-      if (UserModule.roles.length === 0) {
-        try {
-        } catch (err) {}
-      } else {
-        next()
-      }
+      next()
+      // if (UserModule.roles.length === 0) {
+      //   try {
+      //   } catch (err) {}
+      // } else {
+      //   next()
+      // }
     }
   } else {
     if (whiteList.indexOf(to.path) !== -1) {
