@@ -1,8 +1,8 @@
 import { VuexModule, Module, Action, Mutation, getModule } from 'vuex-module-decorators'
 import { getToken, setToken, removeToken } from '@/utils/cookies'
-import store from '@/store'
 import { login, getUserInfo, logout } from '@/api/user'
 import { resetRouter } from '@/router/index'
+import store from '@/store'
 
 export interface IUserState {
   token: string

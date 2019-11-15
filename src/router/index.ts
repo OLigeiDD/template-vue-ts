@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import Layout from '@/layout/index.vue'
+import tableRouter from './modules/table'
 
 Vue.use(VueRouter)
 
@@ -23,6 +24,8 @@ export const constantRoutes: RouteConfig[] = [
     ]
   }
 ]
+
+export const asyncRoutes: RouteConfig[] = [tableRouter]
 
 export const createRouter = () =>
   new VueRouter({

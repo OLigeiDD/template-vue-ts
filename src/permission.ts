@@ -1,7 +1,9 @@
 import router from './router'
 import { Route } from 'vue-router'
 import { UserModule } from '@/store/modules/user'
+
 import Nprogress from 'nprogress'
+import { PermissionModule } from './store/modules/permission'
 
 const whiteList = ['/login', '/auth-redirect']
 
@@ -21,7 +23,23 @@ router.beforeEach(async (to: Route, from: Route, next: any) => {
       next({ path: '/' })
       Nprogress.done()
     } else {
-      next()
+      console.log('已有token') //
+
+      if (UserModule.roles.length === 0) {
+        // 没有用户权限信息
+        try {
+          await UserModule.GetUserInfo()
+          const rolse = UserModule.roles
+          // 生成路由信息
+          PermissionModule.GenerateRoutes(rolse)
+          console.log(PermissionModule.dynamicRoutes)
+          router.addRoutes(PermissionModule.dynamicRoutes)
+
+          next({ ...to, replace: true }) // replace: true加上后路由不会留下历史记录
+        } catch (err) {}
+      } else {
+        next()
+      }
       // if (UserModule.roles.length === 0) {
       //   try {
       //   } catch (err) {}
