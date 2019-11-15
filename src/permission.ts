@@ -32,7 +32,7 @@ router.beforeEach(async (to: Route, from: Route, next: any) => {
           const rolse = UserModule.roles
           // 生成路由信息
           PermissionModule.GenerateRoutes(rolse)
-          console.log(PermissionModule.dynamicRoutes)
+          // 动态添加路由
           router.addRoutes(PermissionModule.dynamicRoutes)
 
           next({ ...to, replace: true }) // replace: true加上后路由不会留下历史记录
