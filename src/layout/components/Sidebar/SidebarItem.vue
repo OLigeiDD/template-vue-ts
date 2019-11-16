@@ -1,36 +1,71 @@
 <template>
-  <div>
+  <!-- 如果meta有hidden就不用渲染 -->
+  <div v-if="!route.meta || !route.meta.hidden">
+    <!-- 如果没有children或只有一个children -->
+    <template v-if="childrenNumber <=1">
+      <el-menu-item :index="resolvePath(onlyOnechildrenRoute.path)">
+        <svg-icon
+          v-if="onlyOnechildrenRoute.meta && onlyOnechildrenRoute.meta.icon"
+          :name="onlyOnechildrenRoute.meta.icon"
+        ></svg-icon>
+        <span
+          v-if="onlyOnechildrenRoute.meta && onlyOnechildrenRoute.meta.title"
+          slot="title"
+        >{{$t('route.'+ onlyOnechildrenRoute.meta.title)}}</span>
+      </el-menu-item>
+    </template>
     <!-- 如果有children -->
-    <template v-if="true">
-      <el-submenu :key="route.path"></el-submenu>
-    </template>
-    <!-- 如果没有children -->
-    <template>
-      <el-menu-item index="route.path" :key="route.path"></el-menu-item>
-    </template>
-
-    <!-- <el-submenu>
+    <el-submenu v-else :index="basePath">
       <template slot="title">
-        <i class="el-icon-location"></i>
-        <span slot="title">导航一</span>
+        <svg-icon v-if="route.meta && route.meta.icon" :name="route.meta.icon"></svg-icon>
+        <span v-if="route.meta &&route.meta.title" slot="title">{{$t('route.'+ route.meta.title)}}</span>
       </template>
-      <el-submenu index="1-4">
-        <span slot="title">选项4</span>
-        <el-menu-item index="/">选项1</el-menu-item>
-      </el-submenu>
+      <SidebarItem
+        v-for="item in route.children"
+        :route="item"
+        :key="item.path"
+        :base-path="resolvePath(item.path)"
+      />
     </el-submenu>
-    <el-menu-item index="/table">
-      <i class="el-icon-menu"></i>
-      <span slot="title">导航二</span>
-    </el-menu-item>-->
   </div>
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import path from 'path'
+import { Vue, Component, Prop } from 'vue-property-decorator'
+import { RouteConfig } from 'vue-router'
 
-@Component({})
-export default class extends Vue {}
+@Component({
+  name: 'SidebarItem',
+  components: {}
+})
+export default class extends Vue {
+  @Prop({ required: true }) private route!: RouteConfig
+  @Prop({ default: '' }) private basePath!: string
+
+  get childrenNumber() {
+    if (this.route.children) {
+      return this.route.children.length
+    } else {
+      return 0
+    }
+  }
+
+  get onlyOnechildrenRoute() {
+    if (this.childrenNumber === 1 && this.route.children) {
+      return this.route.children[0]
+    }
+    return this.route
+  }
+
+  private resolvePath(routePath: string) {
+    if (this.childrenNumber > 0) {
+      return path.resolve(this.basePath, routePath)
+    } else {
+      return this.basePath
+    }
+  }
+}
 </script>
 
 <style scoped>

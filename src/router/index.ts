@@ -10,6 +10,9 @@ export const constantRoutes: RouteConfig[] = [
   {
     path: '/login',
     name: 'login',
+    meta: {
+      hidden: true
+    },
     component: () => import(/* webpackChunkName: "login" */ '@/views/login/index.vue')
   },
   {
@@ -19,13 +22,25 @@ export const constantRoutes: RouteConfig[] = [
     children: [
       {
         path: 'dashboard',
-        component: () => import(/* webpackChunkName: "dashboard" */ '@/views/dashboard/index.vue')
+        component: () => import(/* webpackChunkName: "dashboard" */ '@/views/dashboard/index.vue'),
+        meta: {
+          title: 'dashboard',
+          icon: 'dashboard',
+          affix: true
+        }
       }
     ]
   }
 ]
 
-export const asyncRoutes: RouteConfig[] = [tableRouter]
+export const asyncRoutes: RouteConfig[] = [
+  tableRouter,
+  {
+    path: '*',
+    redirect: '/404',
+    meta: { hidden: true }
+  }
+]
 
 export const createRouter = () =>
   new VueRouter({
