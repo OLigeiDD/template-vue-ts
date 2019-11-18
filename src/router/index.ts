@@ -33,6 +33,7 @@ export const constantRoutes: RouteConfig[] = [
   }
 ]
 
+// 异步路由
 export const asyncRoutes: RouteConfig[] = [
   tableRouter,
   {
