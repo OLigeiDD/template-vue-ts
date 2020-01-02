@@ -23,7 +23,7 @@ router.beforeEach(async (to: Route, from: Route, next: any) => {
       next({ path: '/' })
       Nprogress.done()
     } else {
-      console.log('已有token') //
+      // console.log('已有token') //
 
       if (UserModule.roles.length === 0) {
         // 没有用户权限信息

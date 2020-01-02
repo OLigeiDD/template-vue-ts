@@ -91,8 +91,12 @@ export default class extends Vue {
   }
 
   private loginRules = {
-    username: [{ require: true, trigger: 'blur', validator: this.validateUsername }],
-    password: [{ require: true, trigger: 'blur', validator: this.validatePassword }]
+    username: [
+      { require: true, trigger: 'blur', validator: this.validateUsername }
+    ],
+    password: [
+      { require: true, trigger: 'blur', validator: this.validatePassword }
+    ]
   }
 
   private passwordType = 'password'
@@ -121,7 +125,6 @@ export default class extends Vue {
       if (valid) {
         this.loading = true
         await UserModule.Login(this.loginForm)
-        console.log(this.redirect, this.otherQuery)
         this.$router.push({
           path: this.redirect || '/',
           query: this.otherQuery
