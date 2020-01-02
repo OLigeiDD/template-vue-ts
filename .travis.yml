@@ -9,6 +9,6 @@ before_install:
 
 script:
   - npm run build
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" -password-stdin
+  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
   - docker build -t yd1340794/vue-ts:latest
   - docker push yd1340794/vue-ts:latest
