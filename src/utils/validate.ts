@@ -1,7 +1,8 @@
 export const isValidUsername = (str: string): boolean =>
   ['admin', 'editor'].indexOf(str.trim()) >= 0
 
-export const isExternal = (path: string): boolean => /^(https?:|mailto:|tel:)/.test(path)
+export const isExternal = (path: string): boolean =>
+  /^(https?:|mailto:|tel:)/.test(path)
 
 export const isArray = (arg: any): boolean => {
   if (typeof Array.isArray === 'undefined') {

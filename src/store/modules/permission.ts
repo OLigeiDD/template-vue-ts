@@ -1,4 +1,10 @@
-import { VuexModule, Module, Action, Mutation, getModule } from 'vuex-module-decorators'
+import {
+  VuexModule,
+  Module,
+  Action,
+  Mutation,
+  getModule
+} from 'vuex-module-decorators'
 import { RouteConfig } from 'vue-router'
 import { constantRoutes, asyncRoutes } from '@/router'
 import store from '@/store'

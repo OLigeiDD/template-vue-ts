@@ -49,6 +49,7 @@ export const createRouter = () =>
   })
 
 // Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
+// 不刷新页面更新路由
 export const resetRouter = () => {
   const newRouter = createRouter()
   ;(router as any).matcher = (newRouter as any).matcher // reset router

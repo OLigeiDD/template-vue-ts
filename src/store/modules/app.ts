@@ -1,5 +1,17 @@
-import { VuexModule, Module, Mutation, Action, getModule } from 'vuex-module-decorators'
-import { getSidebarStatus, getSize, setSidebarStatus, setLanguage, setSize } from '@/utils/cookies'
+import {
+  VuexModule,
+  Module,
+  Mutation,
+  Action,
+  getModule
+} from 'vuex-module-decorators'
+import {
+  getSidebarStatus,
+  getSize,
+  setSidebarStatus,
+  setLanguage,
+  setSize
+} from '@/utils/cookies'
 import store from '@/store'
 import { getLocale } from '@/lang'
 

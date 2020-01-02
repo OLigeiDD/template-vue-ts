@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import { PermissionModule } from '../../../store/modules/permission'
+import { PermissionModule } from '@/store/modules/permission'
 import SiderbarItem from './SidebarItem.vue'
 import { RouteConfig } from 'vue-router'
 
@@ -34,6 +34,7 @@ export default class extends Vue {
     return path
   }
 
+  // 过滤出需要显示的路由
   private filterShowRoutes(routes: RouteConfig[]) {
     const showRoutes: RouteConfig[] = []
     routes.forEach(route => {

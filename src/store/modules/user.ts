@@ -1,4 +1,10 @@
-import { VuexModule, Module, Action, Mutation, getModule } from 'vuex-module-decorators'
+import {
+  VuexModule,
+  Module,
+  Action,
+  Mutation,
+  getModule
+} from 'vuex-module-decorators'
 import { getToken, setToken, removeToken } from '@/utils/cookies'
 import { login, getUserInfo, logout } from '@/api/user'
 import { resetRouter } from '@/router/index'
